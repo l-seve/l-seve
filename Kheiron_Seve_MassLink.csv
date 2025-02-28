@@ -1,0 +1,2 @@
+Device_Identifiant,Device_Nom,DTwinTemplateId,DecoderBindingReference,DTwinName,DTwinDesc,TimeZoneInfoId,UpdateDataTime,AccessGroupIds,NotificationGroupIds,GroupIds,RetentionPolicyId,PlanReference,PricingPeriod,AutoRenew
+70B3D5B020153078,70B3D5B020153078,atp-1,92155369-a06c-4aa0-9aad-2ccd0cfc8c1e,70B3D5B020153078,70B3D5B020153078,Romance Standard Time,True,"rag-2, rag-3","ant-1, ant-2",agr-26,arp-1,KSP KHEIRON Service Platform M,Yearly,True
