@@ -137,6 +137,8 @@ def send_downlink_from_gui():
     # Utiliser la payload prédéfinie si le port est 51
     if f_port == 51:
         hex_payload = PREDEFINED_PAYLOADS[f_port]  # Reboot
+        payload_entry.delete(0, tk.END)
+        payload_entry.insert(0, hex_payload)
 
     DOWNLINK_DATA["f_port"] = f_port  # Mettre à jour le f_port sélectionné
     client_info = CLIENT_TOKENS.get(client)
@@ -166,6 +168,15 @@ def update_auth_token(*args):
     client = client_var.get()
     global AUTH_TOKEN
     AUTH_TOKEN = CLIENT_TOKENS.get(client)["token"]
+
+# Fonction pour mettre à jour la payload en fonction du port sélectionné
+def update_payload(*args):
+    f_port = int(f_port_var.get())
+    if f_port == 51:
+        payload_entry.delete(0, tk.END)
+        payload_entry.insert(0, PREDEFINED_PAYLOADS[f_port])
+    else:
+        payload_entry.delete(0, tk.END)
 
 # Fonction pour ajouter un message au log
 def log_message(message):
@@ -205,6 +216,7 @@ f_port_var = tk.StringVar(root)
 f_port_var.set("choisir")  # Valeur par défaut
 f_port_menu = tk.OptionMenu(root, f_port_var, *F_PORTS)
 f_port_menu.grid(row=2, column=1, padx=10, pady=10)
+f_port_var.trace("w", update_payload)  # Appeler update_payload lorsque la sélection change
 
 tk.Label(root, text="Payload (Hex):").grid(row=3, column=0, padx=10, pady=10)
 payload_entry = tk.Entry(root)
